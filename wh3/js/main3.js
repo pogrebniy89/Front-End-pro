@@ -45,7 +45,7 @@ for (; posMax <= posMin; posMax++) {
 }
 console.log(arrB, 'arrB');
 console.log(arr);
-
+console.log(arr);
 
 
 /*let arrSize = +prompt('Введите размер масива', '');
