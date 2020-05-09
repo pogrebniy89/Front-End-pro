@@ -1,9 +1,8 @@
 // Написать функцию заполнения массива. Имя произвольное.
 function addArr(arrLength) {
-    var arr = [];
-    arr.length = arrLength;
+    let arr = [];
 
-    for (var i = 0, size = arr.length; i < size; i++) {
+    for (let i = 0; i < arrLength; i++) {
         arr[i] = Math.round(Math.random() * 500);
     }
     return arr;
@@ -43,3 +42,26 @@ function comparisonArr(arr1, arr2) {
 var maxSumArr = comparisonArr(arr, arrN);
 
 console.log(maxSumArr, 'maxSumArr');
+
+/*
+function comparisonArr(arr1, arr2) {
+    var result1 = arr1.reduce(function (sum, current) {
+        return sum + current;
+
+    }, 0);
+    var result2 = arr2.reduce(function (sum, current) {
+        return sum + current;
+
+    }, 0);
+    console.log(result1, 'return1');
+    console.log(result2, 'return2');
+
+    if (result1 > result2) {
+        return arr1;
+    } else {
+        return arr2;
+    }
+}
+
+var maxSumArr = comparisonArr(arr, arrN);
+console.log(maxSumArr, 'maxSumArr');*/
