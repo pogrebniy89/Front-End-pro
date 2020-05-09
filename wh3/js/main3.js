@@ -31,6 +31,7 @@ for (let i = 0; i < arrSize; i++) {
     }
 }
 
+
 console.log(minValue, 'minValue');
 // console.log(posMin, 'posMin');
 console.log(maxValue, 'maxValue');

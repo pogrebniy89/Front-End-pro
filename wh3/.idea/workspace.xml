@@ -1,15 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c74d2874-8d68-4c97-bc04-2ee1ee3c9c9d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../wh6/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../wh6/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../wh6/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../wh6/.idea/wh6.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../wh6/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../wh6/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../wh6/js/wh6.1.js" afterDir="false" />
+    <list default="true" id="de0e6e54-463c-49c7-885c-4f88c0c2e13b" name="Default Changelist" comment="fix git">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/main3.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/main3.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -26,7 +20,7 @@
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="IgnoredFileRootStore">
     <option name="generatedRoots">
@@ -40,7 +34,7 @@
   <component name="PropertiesComponent">
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../wh6" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../wh7" />
     <property name="settings.editor.selected.configurable" value="MTConfigurable" />
   </component>
   <component name="RunDashboard">
@@ -81,6 +75,28 @@
       <workItem from="1588842426408" duration="2151000" />
       <workItem from="1589018420171" duration="714000" />
     </task>
+    <task id="LOCAL-00001" summary="fix git">
+      <created>1589049581349</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1589049581349</updated>
+    </task>
+    <task id="LOCAL-00002" summary="fix git">
+      <created>1589049632115</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1589049632115</updated>
+    </task>
+    <task id="LOCAL-00003" summary="fix git">
+      <created>1589049642346</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1589049642346</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -98,5 +114,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="fix git" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix git" />
   </component>
 </project>
