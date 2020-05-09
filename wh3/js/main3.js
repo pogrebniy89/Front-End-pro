@@ -4,19 +4,20 @@
     Найти максимальное число и минимальное число.
     Элементы массива между min -- max записать в массив B.*/
 
-var arrSize = +prompt('Введите размер масива', '10');
-var arr = [];
-var min = 10;
-var max = 500;
+let arrSize = +prompt('Введите размер масива', '10');
+let arr = [];
+let min = 10;
+let max = 500;
+
 
 for (let i = 0; i < arrSize; i++) {
     arr[i] = Math.round(Math.random() * (max - min) + min);
 }
-var posMin = 0;
-var posMax = 0;
+let posMin = 0;
+let posMax = 0;
 
-for (var i = 0; i < arrSize; i++) {
-    if (i == 0){
+for (let i = 0; i < arrSize; i++) {
+    if (i === 0){
         var minValue = arr[0];
         var maxValue = arr[0];
     }
@@ -33,19 +34,38 @@ for (var i = 0; i < arrSize; i++) {
 console.log(minValue, 'minValue');
 // console.log(posMin, 'posMin');
 console.log(maxValue, 'maxValue');
-// console.log(posMax, 'posMax');
+// console.log(posMax, 'posMax')
 
 let arrB = [];
 
-for (; posMin < posMax; posMin++) {
-    arrB[arrB.length] = arr[posMin];
+
+if(posMin < posMax){
+    for (let i = posMin; i <= posMax; i++) {
+        arrB[arrB.length] = arr[i];
+    }
+}else{
+    for (let i = posMax; i <= posMin; i++) {
+        arrB[arrB.length] = arr[i];
+    }
 }
-for (; posMax <= posMin; posMax++) {
-    arrB[arrB.length] = arr[posMax];
-}
-console.log(arrB, 'arrB');
-console.log(arr);
-console.log(arr);
+
+
+
+
+// for (; posMin < posMax; posMin++) {
+//     arrB[arrB.length] = arr[posMin];
+// }
+
+// while (posMin < posMax){
+//     arrB[arrB.length] = arr[posMin];
+//     posMin++
+// }
+//
+// for (; posMax <= posMin; posMax++) {
+//     arrB[arrB.length] = arr[posMax];
+// }
+console.log(arrB, 'final');
+console.log(arr, 'raw');
 
 
 /*let arrSize = +prompt('Введите размер масива', '');
