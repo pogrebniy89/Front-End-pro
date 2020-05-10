@@ -16,10 +16,13 @@ for (let i = 0; i < arrSize; i++) {
 let posMin = 0;
 let posMax = 0;
 
+let minValue;
+let maxValue;
+
 for (let i = 0; i < arrSize; i++) {
     if (i === 0){
-        var minValue = arr[0];
-        var maxValue = arr[0];
+        minValue = arr[0];
+        maxValue = arr[0];
     }
     if (minValue > arr[i]){
         minValue = arr[i];
@@ -31,13 +34,31 @@ for (let i = 0; i < arrSize; i++) {
     }
 }
 
-
-console.log(minValue, 'minValue');
-// console.log(posMin, 'posMin');
-console.log(maxValue, 'maxValue');
-// console.log(posMax, 'posMax')
+console.log(minValue, 'Минимальное значение');
+console.log(maxValue, 'Максимальное значение');
 
 let arrB = [];
+let start;
+let stop;
+
+if (posMin < posMax){
+    start = posMin;
+    stop = posMax;
+} else {
+    start = posMax;
+    stop = posMin;
+}
+
+for (let i = start; i <= stop; i++){
+    arrB[arrB.length] = arr[i];
+}
+
+console.log(arrB, 'Финальныкй масив');
+console.log(arr, 'Начальный масив');
+
+// =================== Вариант без дополнительныз преременных, но с 2 щиклами.
+
+/*let arrB = [];
 
 
 if(posMin < posMax){
@@ -49,6 +70,29 @@ if(posMin < posMax){
         arrB[arrB.length] = arr[i];
     }
 }
+
+console.log(arrB, 'Финальныкй масив');
+console.log(arr, 'Начальный масив');*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -65,8 +109,7 @@ if(posMin < posMax){
 // for (; posMax <= posMin; posMax++) {
 //     arrB[arrB.length] = arr[posMax];
 // }
-console.log(arrB, 'final');
-console.log(arr, 'raw');
+
 
 
 /*let arrSize = +prompt('Введите размер масива', '');
