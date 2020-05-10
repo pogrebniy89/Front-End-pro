@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="de0e6e54-463c-49c7-885c-4f88c0c2e13b" name="Default Changelist" comment="fix git">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/main3.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/main3.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/main2.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/main2.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -34,7 +34,7 @@
   <component name="PropertiesComponent">
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../wh7" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="MTConfigurable" />
   </component>
   <component name="RunDashboard">
@@ -54,7 +54,7 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="c74d2874-8d68-4c97-bc04-2ee1ee3c9c9d" name="Default Changelist" comment="" />
+      <changelist id="de0e6e54-463c-49c7-885c-4f88c0c2e13b" name="Default Changelist" comment="fix git" />
       <created>1587908371395</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
@@ -74,6 +74,7 @@
       <workItem from="1588840246539" duration="1439000" />
       <workItem from="1588842426408" duration="2151000" />
       <workItem from="1589018420171" duration="714000" />
+      <workItem from="1589097549608" duration="331000" />
     </task>
     <task id="LOCAL-00001" summary="fix git">
       <created>1589049581349</created>
