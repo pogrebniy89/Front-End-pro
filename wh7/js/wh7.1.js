@@ -55,7 +55,6 @@ function initSlider(size) {
 
 let count = new initSlider(5);
 
-
 console.log(count.up());
 console.log(count.up());
 console.log(count.up());
