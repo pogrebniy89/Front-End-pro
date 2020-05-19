@@ -121,3 +121,4 @@ console.log(count1.set(2));
 console.log(count1.set(8));
 console.log(count1.set(1));
 console.log(count1.set(33));
+console.log(count1.set(33));
