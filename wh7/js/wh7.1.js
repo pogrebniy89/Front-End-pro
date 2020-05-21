@@ -16,14 +16,17 @@ function initSlider(size) {
     let counter = 0;
 
     this.up = function () {
-        if (counter < size) {
-            counter++;
-            return counter;
-        } else if (counter === size) {
-            counter = 0;
-            return counter;
-        }
+        counter++;
     };
+
+    if (up() < size) {
+        return counter;
+    } else if (up === size) {
+        counter = 0;
+        return counter;
+    }
+
+
 
 
     this.down = function () {
@@ -55,11 +58,12 @@ function initSlider(size) {
 
 let count = new initSlider(5);
 
+
 console.log(count.up());
 console.log(count.up());
 console.log(count.up());
 console.log(count.up());
-console.log(count.set(0));
+console.log(count.up());
 console.log(count.up());
 console.log(count.up());
 console.log(count.up());
@@ -120,5 +124,4 @@ console.log(count1.set(-5));
 console.log(count1.set(2));
 console.log(count1.set(8));
 console.log(count1.set(1));
-console.log(count1.set(33));
 console.log(count1.set(33));
