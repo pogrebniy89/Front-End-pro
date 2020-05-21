@@ -15,51 +15,38 @@
 function initSlider(size) {
     let counter = 0;
 
-    this.up = function () {
-        counter++;
-    };
-
-    if (up() < size) {
+    if (counter >= 0 && counter <= size) {
         return counter;
-    } else if (up === size) {
+    } else if (counter < 0 || counter >= size) {
+        console.log('значение за предалами диапазона');
         counter = 0;
         return counter;
+
     }
 
-
-
-
-    this.down = function () {
-        if (counter === 0) {
-            counter--;
-        }
-        if (counter < 0) {
-            counter = size;
-            return counter;
-        }
-        if (counter > 0) {
-            counter--;
-            return counter;
-        }
-    };
-
-
-    this.set = function (value) {
-        if (value >= 0 && value <= size) {
-            counter = value;
-            return counter;
-        } else if (value < 0 || value >= size) {
-            console.log('значение за предалами диапазона');
-            return counter;
-        }
-    };
-
 }
+
+    let obj = {
+
+        up: function () {
+            this.counter++;
+            return this.counter;
+        },
+        down: function () {
+            this.counter--;
+            return this.counter;
+        },
+        set: function (value) {
+            this.counter = value;
+            return this.counter;
+        }
+    };
+
+
 
 let count = new initSlider(5);
 
 
-console.log(count.up());
 console.log(count.up());
 console.log(count.up());
 console.log(count.up());
