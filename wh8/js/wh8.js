@@ -29,3 +29,16 @@
 // Пример: obj .doFunction(sum, 2, 4) .copy('some_name') .target('another_some_name') .doFunction(mul, 6, 3)
 //
 // -------------------------------------------------------------------------------------------------
+
+let obj = {
+    copy: function () {
+        
+    },
+    clear: function () {
+        
+    },
+    doFunction: function () {
+        
+    }
+};
+
