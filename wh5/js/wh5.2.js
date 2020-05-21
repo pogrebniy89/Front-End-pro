@@ -16,17 +16,28 @@ var object2 = {
     e: 60
 };
 
+var objekt3 = {
+    g: 1,
+    h: 2,
+    j: 3
+};
+
 function concatenationObject(x, y) {
     var newObject = {};
-    for (var key in x) {
-        newObject[key] = x[key];
+
+    function createObj(obj) {
+        for (var key in obj) {
+            newObject[key] = obj[key];
+        }
     }
-    for (var key in y) {
-        newObject[key] = y[key];
+
+    for (let i = 0; i <= arguments.length; i++){
+        let value = arguments[i];
+        createObj(value);
     }
     return newObject;
 }
 
-var object = concatenationObject(object1, object2);
+var object = concatenationObject(object1, object2, objekt3);
 
 console.log(object);

@@ -15,22 +15,21 @@ var object2 = {
 
 function concatenationObject(x, y, flag) {
     var newObject = {};
+
+    function createObj(obj) {
+        for (var key in obj) {
+            newObject[key] = obj[key];
+        }
+    }
+
     if (flag == false) {
-        for (var key in x) {
-            newObject[key] = x[key];
-        }
-        for (var key in y) {
-            newObject[key] = y[key];
-        }
+        createObj(x);
+        createObj(y);
         return newObject;
     }
     if (flag == true) {
-        for (var key in y) {
-            newObject[key] = y[key];
-        }
-        for (var key in x) {
-            newObject[key] = x[key];
-        }
+        createObj(x);
+        createObj(y);
         return newObject;
     }
 }
