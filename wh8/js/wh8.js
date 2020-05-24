@@ -37,8 +37,22 @@ let obj = {
     clear: function () {
         
     },
-    doFunction: function () {
-        
+    doFunction: function (func, x, y) {
+        let value = 0;
+        switch (func) {
+            case sum:
+                value = x + y;
+                break;
+            case def:
+                value = x - y;
+                break;
+            case mul:
+                value = x * y;
+                break;
+            case div:
+                value = x / y;
+        }
+        return this.value;
     }
 };
 
