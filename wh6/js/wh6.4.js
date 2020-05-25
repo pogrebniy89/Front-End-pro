@@ -10,7 +10,7 @@ function isEven(x) {
 function filter(callback, arr) {
     let arrN = [];
     for (let i = 0; i < arr.length; i++) {
-        if (isEven(arr[i]) === true) {
+        if (isEven(arr[i])) {
             arrN[arrN.length] = arr[i];
         }
     }
