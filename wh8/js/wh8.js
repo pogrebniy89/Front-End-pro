@@ -31,28 +31,35 @@
 // -------------------------------------------------------------------------------------------------
 
 let obj = {
-    copy: function () {
-        
+    copy() {
+
     },
-    clear: function () {
-        
+    clear() {
+
     },
-    doFunction: function (func, x, y) {
+    doFunction(func, x, y) {
         let value = 0;
+
+        let result = {};
+
         switch (func) {
-            case sum:
+            case 'sum':
                 value = x + y;
                 break;
-            case def:
+            case 'def':
                 value = x - y;
                 break;
-            case mul:
+            case 'mul':
                 value = x * y;
                 break;
-            case div:
+            case 'div':
                 value = x / y;
         }
-        return this.value;
+        result.value = value;
+
+        return result;
     }
 };
 
+
+console.log(obj.doFunction('div',5,2)).doFunction('mul',5,10);
