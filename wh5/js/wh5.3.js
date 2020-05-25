@@ -25,13 +25,12 @@ function concatenationObject(x, y, flag) {
     if (flag == false) {
         createObj(x);
         createObj(y);
-        return newObject;
     }
     if (flag == true) {
         createObj(x);
         createObj(y);
-        return newObject;
     }
+    return newObject;
 }
 
 var object = concatenationObject(object1, object2, false);
