@@ -13,27 +13,33 @@ var object2 = {
     e: 60
 };
 
-function concatenationObject(x, y, flag) {
+function createObj(obj1, obj2) {
     var newObject = {};
 
-    function createObj(obj) {
+    function nObj(obj) {
         for (var key in obj) {
             newObject[key] = obj[key];
         }
     }
 
-    if (flag == false) {
-        createObj(x);
-        createObj(y);
-    }
-    if (flag == true) {
-        createObj(x);
-        createObj(y);
-    }
+    nObj(obj1);
+    nObj(obj2);
+
     return newObject;
 }
 
-var object = concatenationObject(object1, object2, false);
+function concatenationObject(x, y, flag) {
+
+    if (flag == false) {
+        return createObj(x, y);
+    }
+    if (flag == true) {
+        return createObj(y, x);
+    }
+
+}
+
+var object = concatenationObject(object1, object2, true);
 
 console.log(object1, 'Обект 1');
 console.log(object2, 'Обект 2');
