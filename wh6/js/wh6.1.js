@@ -17,18 +17,20 @@ let arrN = addArr(20);
 console.log(arrN, 'Масив 2');
 
 /*написать функцию, которая примет как аргумент(параметр) два массива и сравнить суммы всех ЧИСЛОВЫХ элементов. Тот массив, сумма которого большая - должен вернутся функцией.*/
+function sum(arr) {
+    let sum = 0;
+    for (let i = 0; i < arr.length; i++) {
+        sum += arr[i];
+    }
+    return sum;
+}
+
 
 function comparisonArr(arr1, arr2) {
-    let sum1 = 0;
-    for (let i = 0; i < arr1.length; i++) {
-        sum1 += arr1[i];
-    }
+    let sum1 = sum(arr1);
     console.log(sum1, 'Сума чисел масива №1');
 
-    let sum2 = 0;
-    for (let j = 0; j < arr2.length; j++) {
-        sum2 += arr2[j];
-    }
+    let sum2 = sum(arr2);
     console.log(sum2, 'Сума чисел масива №2');
 
     if (sum1 > sum2) {
