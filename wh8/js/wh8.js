@@ -30,36 +30,68 @@
 //
 // -------------------------------------------------------------------------------------------------
 
-let obj = {
-    copy() {
+const obj = {
+    destinationKey: 'result',
 
+    doFunction (func, value, secondValue){
+        this[this.destinationKey] = func(value, secondValue);
+        return this
     },
-    clear() {
 
+    clear (){
+        this[this.destinationKey] = 0;
+        return this
     },
-    doFunction(func, x, y) {
-        let value = 0;
 
-        let result = {};
+    copy (buffer){
+        this[buffer] = this[this.destinationKey];
+        return this
+    },
 
-        switch (func) {
-            case 'sum':
-                value = x + y;
-                break;
-            case 'def':
-                value = x - y;
-                break;
-            case 'mul':
-                value = x * y;
-                break;
-            case 'div':
-                value = x / y;
-        }
-        result.value = value;
-
-        return result;
-    }
+    target (property){
+        this[property] = this[this.destinationKey];
+        this.clear();
+        this.destinationKey = property;
+        return this
+    },
 };
 
+function sum(val1, val2){
+    return val1 + val2
+}
 
-console.log(obj.doFunction('div',5,2)).doFunction('mul',5,10);
+function mul(val1, val2){
+    return val1 * val2
+}
+
+function def(val1, val2){
+    return val1 - val2
+}
+
+function div(val1, val2){
+    return val1 / val2
+}
+
+function printOutput(value, result){
+    console.log(value+" : "+result)
+}
+
+let test = obj;
+
+test.doFunction(mul, 10, 5).doFunction(sum, 2, 3);
+printOutput("sum 2, 3", obj.result);
+test.clear();
+printOutput("after clear", obj.result);
+
+test.doFunction(def, 10, 5).doFunction(div, 100, 4);
+printOutput("div 100, 4", obj.result);
+test.clear();
+printOutput("after clear", obj.result);
+
+test.doFunction(sum, 1, 2).copy("test");
+printOutput("use test", obj.test);
+
+test.doFunction(sum, 1, 3).target('TT');
+
+printOutput("use target, TT", obj.TT);
+printOutput("use target, result", obj.result);
