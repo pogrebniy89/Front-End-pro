@@ -11,6 +11,8 @@ function SuperMath() {
                 console.log(this.dev(obj));
             } else if (obj.znak === '%') {
                 console.log(this.rem(obj));
+            } else {
+                console.log('Знак ' + obj.znak + 'не поддержывается');
             }
         } else {
             this.input()
