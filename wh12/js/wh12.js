@@ -161,3 +161,4 @@ arr.render('+');
 
 arr.clear('row', 1);
 arr.clear('column', 1);
+
