@@ -1,19 +1,7 @@
 function SuperMath() {
     this.check = function (obj) {
         if (confirm('Хотите провести действия с '+ obj.x + ' ' + obj.znak + ' ' + obj.y + ' ?')) {
-            if (obj.znak === '+') {
-                console.log(this.sum(obj));
-            } else if (obj.znak === '-') {
-                console.log(this.dif(obj));
-            } else if (obj.znak === '*') {
-                console.log(this.mul(obj));
-            } else if (obj.znak === '/') {
-                console.log(this.dev(obj));
-            } else if (obj.znak === '%') {
-                console.log(this.rem(obj));
-            } else {
-                console.log('Знак ' + obj.znak + 'не поддержывается');
-            }
+            this.toDo(obj);
         } else {
             this.input()
         }
@@ -50,6 +38,22 @@ SuperMath.prototype.dev = function(obj) {
 
 SuperMath.prototype.rem = function(obj) {
     return obj.x % obj.y
+};
+
+SuperMath.prototype.toDo = function(obj) {
+    if (obj.znak === '+') {
+        console.log(this.sum(obj));
+    } else if (obj.znak === '-') {
+        console.log(this.dif(obj));
+    } else if (obj.znak === '*') {
+        console.log(this.mul(obj));
+    } else if (obj.znak === '/') {
+        console.log(this.dev(obj));
+    } else if (obj.znak === '%') {
+        console.log(this.rem(obj));
+    } else {
+        console.log('Знак ' + obj.znak + 'не поддержывается');
+    }
 };
 
 
