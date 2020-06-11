@@ -1,0 +1,16 @@
+body{
+    margin: 0;
+}
+.decor {
+    width: 300px;
+    background: aquamarine;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.decor_i {
+    width: 200px;
+    box-sizing: border-box;
+    margin: 20px auto 10px;
+}
