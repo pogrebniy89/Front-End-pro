@@ -6,16 +6,14 @@ window.onload = function () {
 
     setInterval(function () {
             let test = '';
+            let size = elements.length - 1;
 
-            for (let i = 0, size = elements.length; i < size; i++) {
+            for (let i = 0; i < size; i++) {
                 if (elements[i].value) {
-                    if (i === size - 1) {
-                        test += (elements[i].value + '.')
-                    } else {
-                        test += (elements[i].value + ', ');
-                    }
+                    test += (elements[i].value + ', ');
                 }
             }
+            test += (elements[size].value + '.');
             textA[0].value = test;
         }
 
