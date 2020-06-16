@@ -1,0 +1,22 @@
+body {
+    margin: 0 auto;
+}
+.diagram{
+    height: 108px;
+    width: 25px;
+    border: 1px solid black;
+    margin-left: 30px;
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column-reverse;
+}
+.diagram__green{
+    width: 25px;
+    background-color: chartreuse;
+
+}
+.diagram__red{
+    width: 25px;
+    background-color: red;
+
+}
