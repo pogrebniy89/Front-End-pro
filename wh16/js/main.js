@@ -31,6 +31,7 @@ window.onload = function () {
                         let value = +prompt('Введите число', '100');
                         counter[i].innerHTML = value;
                         this.setInStore(id, value);
+                        return
                     } else if (count === 'ClearCounters') {
                         console.log('ClearCounters');
                         console.log(counter[i].dataset.counter);
