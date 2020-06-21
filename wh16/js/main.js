@@ -1,11 +1,17 @@
 window.onload = function () {
+    let counter1 = document.querySelectorAll('.counter');
+
+    function get() {
+        for (let i = 0; i < counter1.length; i++) {
+            counter1[i].innerHTML = localStorage.getItem(counter1[i].dataset.counter);
+        }
+    }
+
+    get()
 
     function counter() {
-        // let button = document.querySelector('.button');
         let counter = document.querySelectorAll('.counter');
         let buttonWrap = document.getElementById('block');
-        console.dir(counter);
-        console.log(counter[0].dataset.counter, 'counter')
 
         let data;
         data = {
@@ -17,8 +23,14 @@ window.onload = function () {
             },
             click: function (count) {
 
-                for (let i = 0; i < counter.length; i++ ) {
-                    if(count === counter[i].dataset.counter) {
+                for (let i = 0; i < counter.length; i++) {
+                    if (count === 'ClearCounters') {
+                        console.log('ClearCounters');
+                        console.log(counter[i].dataset.counter);
+                        counter[i].innerHTML = 0;
+                        this.setInStore(counter[i].dataset.counter, 0);
+
+                    } else if (count === counter[i].dataset.counter) {
                         console.log(counter[i].dataset.counter, 'тут');
                         let value = null;
                         value = this.getFromStore(count) || 0;
@@ -33,26 +45,9 @@ window.onload = function () {
             showClick: function (event) {
                 let target = event.target;
                 this.click(target.dataset.botton);
-                this.counterInner();
             },
-            counterInner: function () {
-
-                for (let i = 0; i < counter.length; i++ ) {
-                    let valueHTML = null;
-                    valueHTML = this.getFromStore(counter[i].dataset.counter) || 0;
-                    counter[i].innerHTML = valueHTML;
-                }
-
-                // let dat = dataset.counter.one;
-                // console.log(dat,'dat');
-                // value.counter.innerHTML = this.getFromStore(value.counter) || 0;
-            }
         }
-        // counter.innerHTML = store.getFromStore('counter') || 0;
-        // button.addEventListener('click', click);
         buttonWrap.addEventListener('click', data.showClick.bind(data));
-        document.addEventListener('DOMContentLoaded',data.counterInner.bind(data));
-        // buttonWrap.addEventListener('click', data.counterInner.bind(data));
     }
 
     counter()
