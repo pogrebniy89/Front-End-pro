@@ -23,8 +23,15 @@ window.onload = function () {
             },
             click: function (count) {
 
+
                 for (let i = 0; i < counter.length; i++) {
-                    if (count === 'ClearCounters') {
+                    if (count === 'setCounter') {
+                        let id = prompt('Введите ID', 'one');
+                        console.log(id, 'тут1');
+                        let value = +prompt('Введите число', '100');
+                        counter[i].innerHTML = value;
+                        this.setInStore(id, value);
+                    } else if (count === 'ClearCounters') {
                         console.log('ClearCounters');
                         console.log(counter[i].dataset.counter);
                         counter[i].innerHTML = 0;
@@ -51,7 +58,7 @@ window.onload = function () {
     }
 
     counter()
-    
+
 
     //======================================
 
