@@ -19,10 +19,12 @@ window.onload = function () {
 
                 for (let i = 0; i < counter.length; i++ ) {
                     if(count === counter[i].dataset.counter) {
-                        let value = counter[i].dataset.counter;
+                        console.log(counter[i].dataset.counter, 'тут');
+                        let value = null;
                         value = this.getFromStore(count) || 0;
-                        this.setInStore(count, counter[i].dataset.counter);
-                        console.log(count, 'click');
+                        value++;
+                        counter[i].innerHTML = value;
+                        this.setInStore(count, value);
                     }
 
                 }
