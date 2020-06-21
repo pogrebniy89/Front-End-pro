@@ -29,20 +29,20 @@ window.onload = function () {
 
                 }
 
-
-                // let counterValue = ++count.innerHTML;
-                // console.log(count, 'click');
-                // this.setInStore(count, counterValue);
-
             },
             showClick: function (event) {
                 let target = event.target;
-                console.dir(target.dataset.botton);
                 this.click(target.dataset.botton);
-                this.counterInner(target.dataset.counter);
-                // console.dir(target.dataset.counter.target);
+                this.counterInner();
             },
-            counterInner: function (value) {
+            counterInner: function () {
+
+                for (let i = 0; i < counter.length; i++ ) {
+                    let valueHTML = null;
+                    valueHTML = this.getFromStore(counter[i].dataset.counter) || 0;
+                    counter[i].innerHTML = valueHTML;
+                }
+
                 // let dat = dataset.counter.one;
                 // console.log(dat,'dat');
                 // value.counter.innerHTML = this.getFromStore(value.counter) || 0;
@@ -51,6 +51,7 @@ window.onload = function () {
         // counter.innerHTML = store.getFromStore('counter') || 0;
         // button.addEventListener('click', click);
         buttonWrap.addEventListener('click', data.showClick.bind(data));
+        document.addEventListener('DOMContentLoaded',data.counterInner.bind(data));
         // buttonWrap.addEventListener('click', data.counterInner.bind(data));
     }
 
