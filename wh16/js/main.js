@@ -1,9 +1,11 @@
 window.onload = function () {
 
     function counter() {
-        let button = document.querySelector('.button');
-        let counter = document.querySelector('.counter');
+        // let button = document.querySelector('.button');
+        let counter = document.querySelectorAll('.counter');
         let buttonWrap = document.getElementById('block');
+        console.dir(counter);
+        console.log(counter[0].dataset.counter, 'counter')
 
         let data;
         data = {
@@ -13,21 +15,35 @@ window.onload = function () {
             getFromStore: function (key) {
                 return localStorage.getItem(key);
             },
-            click: (function (counter) {
-                console.log(counter, 'click');
-                let counterValue = ++counter.innerHTML;
+            click: function (count) {
 
-                this.setInStore([counter], counterValue);
+                for (let i = 0; i < counter.length; i++ ) {
+                    if(count === counter[i].dataset.counter) {
+                        let value = counter[i].dataset.counter;
+                        value = this.getFromStore(count) || 0;
+                        this.setInStore(count, counter[i].dataset.counter);
+                        console.log(count, 'click');
+                    }
 
-            }).bind(null, counter),
+                }
+
+
+                // let counterValue = ++count.innerHTML;
+                // console.log(count, 'click');
+                // this.setInStore(count, counterValue);
+
+            },
             showClick: function (event) {
                 let target = event.target;
                 console.dir(target.dataset.botton);
                 this.click(target.dataset.botton);
-                this.counterInner(target.dataset.botton);
+                this.counterInner(target.dataset.counter);
+                // console.dir(target.dataset.counter.target);
             },
             counterInner: function (value) {
-                value.innerHTML = this.getFromStore([value]) || 0;
+                // let dat = dataset.counter.one;
+                // console.log(dat,'dat');
+                // value.counter.innerHTML = this.getFromStore(value.counter) || 0;
             }
         }
         // counter.innerHTML = store.getFromStore('counter') || 0;
