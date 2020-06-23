@@ -7,7 +7,7 @@ window.onload = function () {
         }
     }
 
-    get()
+    get();
 
     function counter() {
         let counter = document.querySelectorAll('.counter');
@@ -22,39 +22,46 @@ window.onload = function () {
                 return localStorage.getItem(key);
             },
             click: function (count) {
-
-
-                for (let i = 0; i < counter.length; i++) {
-                    if (count === 'setCounter') {
-                        let id = prompt('Введите ID', 'one');
-                        console.log(id, 'тут1');
-                        let value = +prompt('Введите число', '100');
-                        counter[i].innerHTML = value;
-                        this.setInStore(id, value);
-                        return
-                    } else if (count === 'ClearCounters') {
-                        console.log('ClearCounters');
-                        console.log(counter[i].dataset.counter);
-                        counter[i].innerHTML = 0;
-                        this.setInStore(counter[i].dataset.counter, 0);
-
-                    } else if (count === counter[i].dataset.counter) {
-                        console.log(counter[i].dataset.counter, 'тут');
-                        let value = null;
-                        value = this.getFromStore(count) || 0;
-                        value++;
-                        counter[i].innerHTML = value;
-                        this.setInStore(count, value);
+                if (count === 'setCounter'){
+                    let id = prompt('Введите ID', 'one');
+                    let value = +prompt('Введите число', '100');
+                    console.log(id, 'тут1');
+                    for (let i = 0; i < counter.length; i++) {
+                        if (id === counter[i].dataset.counter) {
+                            counter[i].innerHTML = value;
+                            this.setInStore(id, value);
+                            return
+                        }
                     }
+                } else{
+                    for (let i = 0; i < counter.length; i++) {
+                        if (count === 'ClearCounters') {
+                            console.log('ClearCounters');
+                            console.log(counter[i].dataset.counter);
+                            counter[i].innerHTML = 0;
+                            this.setInStore(counter[i].dataset.counter, 0);
 
+                        } else if (count === counter[i].dataset.counter) {
+                            console.log(counter[i].dataset.counter, 'тут');
+                            let value = null;
+                            value = this.getFromStore(count) || 0;
+                            value++;
+                            counter[i].innerHTML = value;
+                            this.setInStore(count, value);
+                        }
+
+                    }
                 }
+
+
+
 
             },
             showClick: function (event) {
                 let target = event.target;
                 this.click(target.dataset.botton);
             },
-        }
+        };
         buttonWrap.addEventListener('click', data.showClick.bind(data));
     }
 
