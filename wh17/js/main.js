@@ -36,7 +36,9 @@ window.onload = function () {
         for(let key of keys) {
             if (key === count){
                 var val = +prompt('установить значение', '100');
-                store.setInStore(count, val);
+                if(Number.isInteger(val)){
+                    store.setInStore(count, val);
+                }
             }
         }
     }
