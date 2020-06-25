@@ -32,9 +32,12 @@ window.onload = function () {
 
     function setCounter() {
         var count = prompt('установить счетчик', 'counter-1');
-        if(!(store.getFromStore(count) === null)){
-            var val = +prompt('установить значение', '100');
-            store.setInStore(count, val);
+        let keys = Object.keys(localStorage);
+        for(let key of keys) {
+            if (key === count){
+                var val = +prompt('установить значение', '100');
+                store.setInStore(count, val);
+            }
         }
     }
     set.addEventListener('click', setCounter);
