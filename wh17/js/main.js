@@ -16,7 +16,7 @@ window.onload = function () {
         getParent(buttons[i], '.block')
             .querySelector('.counter').innerHTML = store.getFromStore('counter-' + i);
         buttons[i].addEventListener('click', click.bind(buttons[i], i));
-        clear.addEventListener('click', clearAllCounter.bind(buttons[i], i));
+        clear.addEventListener('click', clearAllCounter.bind(null, i));
     }
 
     function click(i) {
