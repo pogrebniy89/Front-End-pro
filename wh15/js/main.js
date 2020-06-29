@@ -22,12 +22,12 @@ function menuModule() {
         ]
     };
 
-    let actions = {
+    var actions = {
         ActionAdd: function () {
             console.log('add');
         },
         ActionSaveAs: function () {
-            console.log('save')
+            console.log('save');
         },
         ActionExit: function () {
             console.log('exit');
@@ -36,7 +36,6 @@ function menuModule() {
             console.log('Edit');
         }
     };
-
 
     function MenuComponent(data, actions) {
         this.data = data;
@@ -93,6 +92,10 @@ function menuModule() {
         .render('.container');
 
 
+    document.oncontextmenu = function(event) {
+        event.preventDefault();
+        alert("Контекстное меню документа");
+    };
 }
 
 
