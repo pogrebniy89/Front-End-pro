@@ -12,16 +12,11 @@ window.onload = function () {
         }
     };
 
-    function setSpan(i) {
+    for (var i = 0; i < buttons.length; i++) {
         getParent(buttons[i], '.block')
             .querySelector('.counter').innerHTML = store.getFromStore('counter-' + i);
-    }
-
-    for (var i = 0; i < buttons.length; i++) {
-        setSpan(i);
         buttons[i].addEventListener('click', click.bind(buttons[i], i));
-        clear.addEventListener('click', clearAllCounter.bind(buttons[i], i));
-        set.addEventListener('click', setCounter.bind(setCounter[i], i))
+        clear.addEventListener('click', clearAllCounter.bind(null, i));
     }
 
     function click(i) {
@@ -33,41 +28,24 @@ window.onload = function () {
 
     function clearAllCounter(i) {
         store.setInStore('counter-' + i, 0);
-        setSpan(i);
     }
 
-    function setCounter(i) {
+    function setCounter() {
         var count = prompt('установить счетчик', 'counter-1');
-        if(store.getFromStore('counter-' + i) === count){
-            console.log('nnnnn');
+        let keys = Object.keys(localStorage);
+        for(let key of keys) {
+            if (key === count){
+                var val = +prompt('установить значение', '100');
+                if(Number.isInteger(val)){
+                    store.setInStore(count, val);
+                }
+            }
         }
-
-
-        // if (!(store.getFromStore(count) === null)){
-        //    var val = +prompt('установить значение', '30');
-        //     store.setInStore(count, val);
-        //     getParent(buttons[i], '.block')
-        //         .querySelector('.counter').innerHTML = store.getFromStore(count);
-        // }
     }
-
-
+    set.addEventListener('click', setCounter);
 
     function getParent(node, parentSelector) {
         return node.closest(parentSelector);
     }
 
-
-    // function clearAllCounter()
-    // {
-    //     for (var i = 0; i < buttons.length; i++) {
-    //         store.setInStore('counter-' + i, 0);
-    //     }
-    // }
-    // clear.addEventListener('click', clearAllCounter);
-    //
-    // function setValueId()
-    // {
-    //
-    // }
-}
+};
