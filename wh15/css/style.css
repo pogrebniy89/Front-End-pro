@@ -22,4 +22,11 @@ ul {
 .column .menu-item {
     border: 1px solid red;
     text-align: center;
+    cursor: pointer;
+}
+
+.context-menu {
+    width: 200px;
+    border: 1px solid greenyellow;
+    cursor: pointer;
 }
