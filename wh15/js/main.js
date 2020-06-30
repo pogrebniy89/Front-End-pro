@@ -98,52 +98,71 @@ window.onload = function () {
 
     menuModule();
 
-    function contextMenu() {
+    function contextMen() {
 
-        document.oncontextmenu = function (event) {
+        const doc = document.querySelector("html");
+        const contextMenu = document.querySelector(".contextMenu");
+
+        doc.addEventListener("contextmenu", event => {
             event.preventDefault();
-            alert("Контекстное меню документа");
-        };
+            contextMenu.style.top = `${event.clientY}px`;
+            contextMenu.style.left = `${event.clientX}px`;
+            contextMenu.classList.add("active");
+        }, false);
+
+        document.addEventListener("click", event => {
+            if (event.button !== 2) {
+                contextMenu.classList.remove("active");
+            }
+        }, false);
+
+        contextMenu.addEventListener("click", event => {
+            event.stopPropagation();
+        }, false);
 
         let data = {
             name: 'menuContext',
             items: [
                 {
-                    title: 'MenuRow',
-                    handler: 'MenuRow'
+                    title: 'Text1',
+                    handler: 'ActionText1'
                 },
                 {
-                    title: 'MenuColumn',
-                    handler: 'MenuColumn'
+                    title: 'Text2',
+                    handler: 'ActionText2'
+                },
+                {
+                    title: 'Text3',
+                    handler: 'ActionText3'
                 }
             ]
         };
 
         let actions = {
-            MenuRow: function () {
-                console.log('Горизонтальное меню');
-                column()
+            ActionText1: function () {
+                console.log('Text1');
             },
-            MenuColumn: function () {
-                console.log('Вертикальное меню');
-
+            ActionText2: function () {
+                console.log('Text2');
+            },
+            ActionText3: function () {
+                console.log('Text3');
             }
         };
+
 
         function MenuContext(data, actions) {
             this.data = data;
             this.actions = actions;
-            this.ul = null;
         }
 
-        MenuContext.prototype.makeMenuItems = function () {
+        MenuContext.prototype.makeMenuContext = function () {
             let fragment = document.createDocumentFragment();
             let items = this.data.items;
 
             for (let i = 0; i < items.length; i++) {
                 let li = document.createElement('li');
                 let item = items[i];
-                li.classList.add('context-menu');
                 li.innerText = item.title;
                 li.addEventListener('click', actions[item.handler]);
                 fragment.append(li);
@@ -151,18 +170,11 @@ window.onload = function () {
 
             return fragment;
         };
-        MenuContext.prototype.makeMenuContainer = function () {
-            let ul = document.createElement('ul');
-            ul.classList.add(data.type);
-
-            return ul;
-        };
 
         MenuContext.prototype.makeMenu = function () {
-            let ul = this.makeMenuContainer();
-            let fragment = this.makeMenuItems();
-            ul.append(fragment);
-            this.ul = ul;
+            let fragment = this.makeMenuContext();
+            contextMenu.append(fragment);
+            this.contextMenu = contextMenu;
 
             return this;
         };
@@ -170,8 +182,8 @@ window.onload = function () {
         MenuContext.prototype.render = function (selector) {
             let parent = document.querySelector(selector);
 
-            if (this.ul && parent) {
-                document.querySelector(selector).append(this.ul);
+            if (this.contextMenu && parent) {
+                document.querySelector(selector).append(this.contextMenu);
             }
 
             return this;
@@ -181,12 +193,12 @@ window.onload = function () {
 
         menu
             .makeMenu()
-            .render('.container');
+            .render('contextMenu');
 
 
     }
 
-    contextMenu();
+    contextMen();
 
 }
 
