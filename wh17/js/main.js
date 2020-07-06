@@ -23,18 +23,8 @@ window.onload = function () {
     block.forEach((item, index) => {
         block[index].setAttribute('data-counter', `counter-${[index]}`);
         console.log(block[index].dataset.counter);
+        block[index].addEventListener('click', showClick);
     });
-
-
-    // for (let i = 0; i < buttons.length; i++) {
-    //     getParent(buttons[i], '.block')
-    //         .querySelector('.counter').innerHTML = store.getFromStore('counter-' + i);
-    //     buttons[i].addEventListener('click', click.bind(buttons[i], i));
-    //     clear.addEventListener('click', clearAllCounter.bind(null, i));
-    //
-    //     buttons[i].classList.add('data-' + [i]);
-    // }
-
 
     function click(i) {
         let block = getParent(this, '.block');
@@ -46,6 +36,7 @@ window.onload = function () {
     function clearAllCounter(i) {
         store.setInStore('counter-' + i, 0);
     }
+
     // console.log(buttons[1].dataset.);
     // function setCounter() {
     //     let count = prompt('установить счетчик', 'counter-1');
@@ -55,10 +46,10 @@ window.onload = function () {
     function setCounter() {
         let count = prompt('установить счетчик', 'counter-1');
         let keys = Object.keys(localStorage);
-        for(let key of keys) {
-            if (key === count){
+        for (let key of keys) {
+            if (key === count) {
                 let val = +prompt('установить значение', '100');
-                if(Number.isInteger(val)){
+                if (Number.isInteger(val)) {
                     store.setInStore(count, val);
                 }
             }
@@ -71,5 +62,13 @@ window.onload = function () {
     function getParent(node, parentSelector) {
         return node.closest(parentSelector);
     }
+
+    function showClick(event) {
+        let target = event.target;
+        this.click(target.dataset.botton);
+        console.log(this, 'showClick');
+    }
+
+    // block.addEventListener('click', showClick);
 
 };
