@@ -22,8 +22,6 @@ window.onload = function () {
 
     block.forEach((item, index) => {
         block[index].setAttribute('data-counter', `counter-${[index]}`);
-        console.log(block[index].dataset.counter);
-        block[index].addEventListener('click', showClick);
     });
 
     function click(i) {
@@ -33,42 +31,39 @@ window.onload = function () {
         store.setInStore('counter-' + i, counterValue); // counter - 2
     }
 
-    function clearAllCounter(i) {
-        store.setInStore('counter-' + i, 0);
+    function clearAllCounter(index) {
+        store.setInStore('counter-' + index, 0);
+
+        return updateCounter(index);
     }
 
-    // console.log(buttons[1].dataset.);
-    // function setCounter() {
-    //     let count = prompt('установить счетчик', 'counter-1');
-    //
-    // }
+    function getID() {
+        let id = prompt('Введите ID', 'counter-1');
 
-    function setCounter() {
-        let count = prompt('установить счетчик', 'counter-1');
-        let keys = Object.keys(localStorage);
-        for (let key of keys) {
-            if (key === count) {
-                let val = +prompt('установить значение', '100');
-                if (Number.isInteger(val)) {
-                    store.setInStore(count, val);
-                }
+        block.forEach((item, index) => {
+            if (block[index].dataset.counter === id) {
+
+                return setCounter(id, index);
             }
-        }
+        });
     }
 
+    function setCounter(id, index) {
+        let value = +prompt('Введите число', '100');
+        store.setInStore(id, value);
 
-    set.addEventListener('click', setCounter);
+        return updateCounter(index);
+    }
+
+    function updateCounter(index) {
+        getParent(block[index], '.block')
+            .querySelector('.counter').innerHTML = store.getFromStore('counter-' + index);
+    }
+
+    set.addEventListener('click', getID);
 
     function getParent(node, parentSelector) {
         return node.closest(parentSelector);
     }
-
-    function showClick(event) {
-        let target = event.target;
-        this.click(target.dataset.botton);
-        console.log(this, 'showClick');
-    }
-
-    // block.addEventListener('click', showClick);
 
 };
