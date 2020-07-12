@@ -5,73 +5,72 @@ function Switch() {
 const promise = new Promise((resolve, reject) => {
     setTimeout(() => {
         if (Switch() === true) {
-            resolve(0);
+            resolve();
         } else {
-            reject(0);
+            reject();
         }
     }, 0)
 });
 
-promise.then((number) => {
-        console.log(number);
-        return 1;
+promise.then(() => {
+        console.log(0);
     },
-    (number) => {
-        console.log(number);
-        return 2;
+    () => {
+        console.log(0);
+        return Promise.reject();
     }
 )
-    .then((number) => {
-            console.log(number);
-            return Promise.resolve(number);
+    .then(() => {
+            console.log(1);
+            return Promise.resolve(true);
         },
-        (number) => {
-            console.log(number);
-            return Promise.resolve(number);
+        () => {
+            console.log(2);
         }
     )
-    .then((number) => {
+    .then((value) => {
             console.log(3);
-            if (number === 1) {
-                return Promise.reject(number)
+            if (value === true) {
+                return Promise.reject(true)
             } else {
-                return Promise.reject(number)
+                return Promise.reject()
             }
         },
         () => {
+            console.log(4);
         }
     )
     .then(() => {
+            console.log(5);
         },
-        (number) => {
+        (value) => {
             console.log(6);
-            if (number === 1) {
-                return Promise.reject(8)
+            if (value === true) {
+                return Promise.reject()
             } else {
-                return Promise.resolve(7)
+                return Promise.resolve()
             }
         }
     )
-    .then((number) => {
-            console.log(number);
-            return Promise.resolve(number)
+    .then(() => {
+            console.log(7);
         },
-        (number) => {
-            console.log(number);
-            return Promise.resolve(number)
+        () => {
+            console.log(8);
         }
     )
     .then(() => {
             console.log(9);
-            return Promise.reject(12)
+            return Promise.reject()
         },
         () => {
-
+            console.log(10);
         }
     )
     .then(() => {
+            console.log(11);
         },
-        (number) => {
-            console.log(number);
+        () => {
+            console.log(12);
         }
     )
