@@ -1,0 +1,17 @@
+[
+  {
+    "login": "Sergei",
+    "password": 123,
+    "secretKey": "@gh4"
+  },
+  {
+    "login": "Valera",
+    "password": 123,
+    "secretKey": "@gh5"
+  },
+  {
+    "login": "Pety",
+    "password": 456,
+    "secretKey": "@gh6"
+  }
+]
