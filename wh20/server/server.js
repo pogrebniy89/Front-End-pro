@@ -24,37 +24,50 @@ app.listen(port, function () {
 
 //------------------------------------------- end config ---------------------------
 
-app.get('/user', function (req, res) {
-    console.log(req.quality, 'qqqqq');
-    res.send('okk');
-})
+// app.get('/user', function (req, res) {
+//     console.log(req.body, 'qqqqq');
+//     res.send('okk');
+// })
+//
+//
+// app.post('/set-user-info', function (req, res) {
+//     const user = req.body;
+//     const {login: addLogin, secretKey: addSecretKey} = req.body;
+//
+//     fs.readFile('./user.json', 'utf8', function (error, data) {
+//         const allUser = JSON.parse(data);
+//
+//         let flag = allUser.some(({login, secretKey}) => login === addLogin && secretKey === addSecretKey);
+//
+//         if (flag === true) {
+//             let userExists = `'Пользователь = '${addLogin}' уже зареистрирован'`;
+//             res.status(301).send(userExists);
+//         } else {
+//             let userExists = `${addLogin}' регистрация прошла успешно'`;
+//             allUser.push(user);
+//             const jsonAdd = JSON.stringify(allUser);
+//
+//             fs.writeFile('./user.json', jsonAdd, err => {
+//                 if (err) {
+//                     console.log('Error writing file', err)
+//                 } else {
+//                     console.log('Successfully wrote file')
+//                 }
+//             });
+//             res.status(200).send(userExists);
+//         }
+//     })
+// });
 
-
-app.post('/set-user-info', function (req, res) {
-    const user = req.body;
-    const {login: addLogin, secretKey: addSecretKey} = req.body;
+app.post('/user-all', function (req, res) {
+    const  front = JSON.parse(req.body);
+    console.log(front, 'сервер');
 
     fs.readFile('./user.json', 'utf8', function (error, data) {
         const allUser = JSON.parse(data);
+        console.log(allUser);
+    });
 
-        let flag = allUser.some(({login, secretKey}) => login === addLogin && secretKey === addSecretKey);
-
-        if (flag === true) {
-            let userExists = `'Пользователь = '${addLogin}' уже зареистрирован'`;
-            res.status(301).send(userExists);
-        } else {
-            let userExists = `${addLogin}' регистрация прошла успешно'`;
-            allUser.push(user);
-            const jsonAdd = JSON.stringify(allUser);
-
-            fs.writeFile('./user.json', jsonAdd, err => {
-                if (err) {
-                    console.log('Error writing file', err)
-                } else {
-                    console.log('Successfully wrote file')
-                }
-            });
-            res.status(200).send(userExists);
-        }
-    })
-});
+    // let test = `какойто текст`;
+    res.send('okk');
+})
