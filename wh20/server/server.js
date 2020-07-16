@@ -60,14 +60,32 @@ app.listen(port, function () {
 // });
 
 app.post('/user-all', function (req, res) {
-    const  front = JSON.parse(req.body);
-    console.log(front, 'сервер');
+    const  {login: loginFront, password: passwordFront} = JSON.parse(req.body);
+    // console.log(front, 'сервер');
 
     fs.readFile('./user.json', 'utf8', function (error, data) {
         const allUser = JSON.parse(data);
-        console.log(allUser);
+
+        const oneUser = allUser.filter(({login, password}) => login === loginFront &&  password === passwordFront);
+
+        if (oneUser.length === 0) {
+            let error = 'Not found';
+            res.status(401).send(JSON.stringify(error));
+        } else {
+            let [{id}] = oneUser;
+            console.log(id, 'nen==');
+            res.status(200).send(JSON.stringify(id));
+        }
     });
 
     // let test = `какойто текст`;
-    res.send('okk');
+    // res.send('okk');
+})
+
+app.post('/user/:id', function (req, res) {
+    const  idUser = JSON.parse(req.body);
+    console.log(idUser, 'сервер товар');
+
+    let id = 'все ок';
+    res.status(200).send(JSON.stringify(id));
 })

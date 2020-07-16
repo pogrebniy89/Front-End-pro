@@ -48,10 +48,22 @@ function submit(event) {
             method: 'POST',
             data: requestPayload,
             success(data) {
-                console.log('succsess результал ответа серваера', data);
+                nextStep(JSON.parse(data));
             }
         });
     }
+}
+
+function nextStep(id) {
+    console.log("следующий шаг", id);
+    sendAjax({
+        url: `http://localhost:3003/user/${id}`,
+        method: 'POST',
+        data: id,
+        success(data) {
+            console.log(data, 'лист с товарими');
+        }
+    });
 }
 
 function prepareForm(form) {
