@@ -1,0 +1,14 @@
+#app{
+    display: flex;
+    flex-direction: row;
+}
+.list{
+    width: 250px;
+    background-color: burlywood;
+    margin-right: 10px;
+}
+.list button{
+    box-sizing: border-box;
+    background-color: greenyellow;
+    width: 100%;
+}
