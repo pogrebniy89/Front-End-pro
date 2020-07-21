@@ -1,18 +1,5 @@
-// let xhttp = new XMLHttpRequest();
-
-// xhttp.onreadystatechange = function () {
-//     console.log(xhttp.readyState);
-//     if (xhttp.readyState !== 4) return
-//         console.log(xhttp.response);
-// }
-
-// xhttp.addEventListener('load', function ({target}) {
-//     const resp = target.response;
-//     console.log(resp, 'response');
-// })
-//
-// xhttp.open('GET', 'http://localhost:3003/user');
-// xhttp.send()
+const listGoods = document.querySelector('.goods');
+const form = document.querySelectorAll('form');
 
 function sendAjax({url, method, success, data}) {
     const xhttp = new XMLHttpRequest();
@@ -20,31 +7,24 @@ function sendAjax({url, method, success, data}) {
     xhttp.addEventListener('load', function ({target}) {
         const resp = target.response;
         success(resp);
-    })
+    });
 
     xhttp.open(method, url);
-    console.log(JSON.stringify(data), 'data');
     xhttp.send(JSON.stringify(data));
 }
 
-
-const form = document.querySelectorAll('form');
-
 form.forEach(form => {
-    // console.log(form, 'form');
     form.addEventListener('click', submit)
-})
+});
 
 function submit(event) {
     event.preventDefault();
     const target = event.target;
 
-    // console.dir(this, 'this');
-
     if (target.tagName.toLowerCase() === 'button') {
         const requestPayload = prepareForm(this);
         sendAjax({
-            url: `http://localhost:3003/user-all`,
+            url: 'http://localhost:3003/user-all',
             method: 'POST',
             data: requestPayload,
             success(data) {
@@ -55,15 +35,18 @@ function submit(event) {
 }
 
 function nextStep(id) {
-    console.log("следующий шаг", id);
-    sendAjax({
-        url: `http://localhost:3003/user/${id}`,
-        method: 'POST',
-        data: id,
-        success(data) {
-            console.log(data, 'лист с товарими');
-        }
-    });
+    if (id === 'Not found') {
+        listGoods.innerHTML = showError(id)
+    } else {
+        sendAjax({
+            url: `http://localhost:3003/user/${id}`,
+            method: 'POST',
+            data: id,
+            success(data) {
+                listGoods.innerHTML = showProduct(JSON.parse(data));
+            }
+        });
+    }
 }
 
 function prepareForm(form) {
@@ -72,23 +55,21 @@ function prepareForm(form) {
     [].forEach.call(form, function (item) {
         const isNotButton = item.tagName.toLowerCase() !== 'button';
 
-        if (isNotButton){
-            // console.log(item, 'item');
+        if (isNotButton) {
             requestPayload[item.name] = item.value;
         }
     });
-
     return requestPayload;
-    // console.log(requestPayload, 'requestPayload');
 }
 
+function showProduct(goods) {
+    return `<div class="goods">
+            ${Object.values(goods).map(value => `<div>${value}</div>`).join(' ')}
+        </div> `;
+}
 
-// button.addEventListener('click', event => {
-//     sendAjax({
-//         url: `http://localhost:3003//user-all`,
-//         method: 'post',
-//         success(data) {
-//             console.log('succsess результал ответа серваера', data);
-//         }
-//     });
-// });
+function showError(Error) {
+    return `<div class="goods">
+            ${Error}
+        </div> `;
+}
