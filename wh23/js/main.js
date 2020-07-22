@@ -15,12 +15,12 @@ let data = {
         'Дело 4',
         'Дело 5',
     ],
-    onClick(value) {
-        console.log(value, 'результа кнопки');
+    onClick(arr1, arr2) {
+        arr2.unshift(arr1.pop());
     }
 };
 
 const TaskManager = new Vue({
     el: '#app',
     data: data
-})
+});

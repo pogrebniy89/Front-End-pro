@@ -11,15 +11,16 @@
         <ul>
             <li v-for="list in listLeft">{{list}}</li>
         </ul>
-        <button :disabled="false" v-on:click="onClick(listLeft[0])">Перенести заметку --></button>
+        <button :disabled="listLeft.length === 0" v-on:click="onClick(listLeft, listRight)">Перенести заметку -->
+        </button>
     </div>
     <div class="list">
         <ul>
             <li v-for="list in listRight">{{list}}</li>
         </ul>
-        <button :disabled="false" v-on:click="onClick(listRight[0])"><-- Перенести заметку</button>
+        <button :disabled="listRight.length === 0" v-on:click="onClick(listRight, listLeft)"><-- Перенести заметку
+        </button>
     </div>
-    <!--    <button :disabled="true">Перенести заметку &ndash;&gt;</button>-->
 </div>
 </body>
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>

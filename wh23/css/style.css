@@ -4,8 +4,12 @@
 }
 .list{
     width: 250px;
+    height: 500px;
     background-color: burlywood;
     margin-right: 10px;
+}
+.list ul {
+    height: 450px;
 }
 .list button{
     box-sizing: border-box;
