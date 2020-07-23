@@ -23,3 +23,21 @@ app.listen(port, function () {
 });
 
 //------------------------------------------- end config ---------------------------
+
+app.get('/country', function (req, res) {
+    console.log('server row 28');
+
+    fs.readFile(`country/country.json`, 'utf8', function (error, data) {
+        console.log(data);
+        res.status(200).send(data);
+    });
+});
+
+app.get('/:id', function (req, res) {
+    console.log('server row 37');
+
+    fs.readFile(`city/:id.json`, 'utf8', function (error, data) {
+        console.log(data);
+        res.status(200).send(data);
+    });
+})
