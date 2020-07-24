@@ -34,10 +34,23 @@ app.get('/country', function (req, res) {
 });
 
 app.get('/:id', function (req, res) {
-    console.log('server row 37');
+    console.log(req.query, 'server row 37');
+    let {index} = req.query;
+    console.log(index, 'server row 39');
 
-    fs.readFile(`city/:id.json`, 'utf8', function (error, data) {
+    fs.readFile(`city/${index}.json`, 'utf8', function (error, data) {
         console.log(data);
         res.status(200).send(data);
     });
-})
+});
+
+app.get('street/:id', function (req, res) {
+    console.log(req.query, 'server row 48');
+    let {index} = req.query;
+    console.log(index, 'server row 50');
+
+    fs.readFile(`street/ukraine/${index}.json`, 'utf8', function (error, data) {
+        console.log(data);
+        res.status(200).send(data);
+    });
+});
