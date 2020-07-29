@@ -1,0 +1,13 @@
+.decor {
+    display: flex;
+    flex-direction: row;
+    margin-right: 10px;
+    align-items: flex-end;
+}
+.decorColumn{
+    width: 50px;
+    /*height: 100px;*/
+    text-align: center;
+    /*background-color: deeppink;*/
+    margin-right: 10px;
+}
