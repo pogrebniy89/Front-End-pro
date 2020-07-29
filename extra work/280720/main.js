@@ -52,7 +52,9 @@ Vue.component('Diagram', {
 Vue.component('column', {
     props: ['indexD'],
     data() {
-        return {}
+        return {
+            heightValue: ''
+        }
     },
     methods: {},
     template: `
