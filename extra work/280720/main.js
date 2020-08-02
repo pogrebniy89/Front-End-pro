@@ -40,7 +40,11 @@ Vue.component('Diagram', {
             ],
         }
     },
-    methods: {},
+    methods: {
+        moveEvent(){
+            console.log('tut');
+        }
+    },
     template: `
             <div class="decor">
                 <column :indexD="value" v-for="value in diagrams"></column>                     
@@ -53,16 +57,21 @@ Vue.component('column', {
     props: ['indexD'],
     data() {
         return {
-            heightValue: ''
+            heightColumn: '',
         }
     },
-    methods: {},
+    methods: {
+        moveEvent(value){
+            console.log('tut', value);
+            this.heightColumn = value;
+        }
+    },
     template: `
         <div class="wrap">
-            <div class="decorColumn" v-bind:style='{height: indexD.height + "px", background: indexD.background}'>{{indexD.name}}
+            <div class="decorColumn" v-bind:style='{height: heightColumn + "px", background: indexD.background}'>{{indexD.name}}
             
             </div>
-            <range :valueRange="indexD.height"></range>   
+            <range :valueRange="indexD.height" @moveHeight="moveEvent"></range>   
         </div>
         
     `
@@ -71,11 +80,17 @@ Vue.component('column', {
 Vue.component('range', {
     props: ['valueRange'],
     data() {
-        return {}
+        return {
+            value: this.valueRange
+        }
     },
-    methods: {},
+    methods: {
+        onClick(){
+            this.$emit('moveHeight', this.value);
+        }
+    },
     template: `
-        <div><input type="range" v-model="valueRange" min="100" max="300" step="1" > {{valueRange}}</div>
+        <div><input type="range" v-model="value" min="100" max="300" step="1" @input="onClick">{{this.value}}</div>
     `
 })
 
