@@ -41,7 +41,7 @@ Vue.component('Diagram', {
         }
     },
     methods: {
-        moveEvent(){
+        moveEvent() {
             console.log('tut');
         }
     },
@@ -61,17 +61,20 @@ Vue.component('column', {
         }
     },
     methods: {
-        moveEvent(value){
-            console.log('tut', value);
+        moveEvent(value) {
+            // console.log('tut', value);
             this.heightColumn = value;
         }
+    },
+    mounted() {
+        this.heightColumn = localStorage.getItem(this.diagramName);
     },
     template: `
         <div class="wrap">
             <div class="decorColumn" v-bind:style='{height: heightColumn + "px", background: indexD.background}'>{{indexD.name}}
             
             </div>
-            <range :valueRange="indexD.height" @moveHeight="moveEvent"></range>   
+            <range :valueRange="indexD" @moveHeight="moveEvent"></range>   
         </div>
         
     `
@@ -81,12 +84,21 @@ Vue.component('range', {
     props: ['valueRange'],
     data() {
         return {
-            value: this.valueRange
+            value: this.valueRange.height,
+            diagramName: this.valueRange.name
         }
     },
     methods: {
-        onClick(){
+        onClick() {
             this.$emit('moveHeight', this.value);
+        }
+    },
+    mounted() {
+        this.value = localStorage.getItem(this.diagramName);
+    },
+    watch: {
+        value(newvalue) {
+            localStorage.setItem(this.diagramName, newvalue);
         }
     },
     template: `
@@ -97,7 +109,5 @@ Vue.component('range', {
 
 let vue = new Vue({
     el: '#app',
-    data: {
-        foo: 123
-    }
+    data: {}
 })
