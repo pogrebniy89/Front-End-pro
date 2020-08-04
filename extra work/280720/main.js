@@ -62,12 +62,12 @@ Vue.component('column', {
     },
     methods: {
         moveEvent(value) {
-            // console.log('tut', value);
             this.heightColumn = value;
         }
     },
     mounted() {
-        this.heightColumn = localStorage.getItem(this.diagramName);
+        this.heightColumn = localStorage.getItem(this.indexD.name);
+        // localStorage.setItem(this.indexD.name, this.indexD.height);
     },
     template: `
         <div class="wrap">
@@ -84,8 +84,7 @@ Vue.component('range', {
     props: ['valueRange'],
     data() {
         return {
-            value: this.valueRange.height,
-            diagramName: this.valueRange.name
+            value: ''
         }
     },
     methods: {
@@ -93,14 +92,21 @@ Vue.component('range', {
             this.$emit('moveHeight', this.value);
         }
     },
-    mounted() {
-        this.value = localStorage.getItem(this.diagramName);
-    },
     watch: {
         value(newvalue) {
-            localStorage.setItem(this.diagramName, newvalue);
+            if(newvalue === null) {
+                localStorage.setItem(this.valueRange.name, this.valueRange.height);
+            } else {
+                localStorage.setItem(this.valueRange.name, newvalue);
+            }
+
         }
     },
+    mounted() {
+        this.value = localStorage.getItem(this.valueRange.name);
+    },
+
+
     template: `
         <div><input type="range" v-model="value" min="100" max="300" step="1" @input="onClick">{{this.value}}</div>
     `
