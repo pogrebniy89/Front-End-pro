@@ -63,6 +63,7 @@ Vue.component('column', {
     methods: {
         moveEvent(value) {
             this.heightColumn = value;
+            // localStorage.setItem(this.indexD.name, value);
         }
     },
     mounted() {
@@ -84,24 +85,26 @@ Vue.component('range', {
     props: ['valueRange'],
     data() {
         return {
-            value: ''
+            value: 0,
+            name: this.valueRange.name
         }
     },
     methods: {
         onClick() {
             this.$emit('moveHeight', this.value);
+            localStorage[this.name] = this.value;
         }
     },
-    watch: {
-        value(newvalue) {
-            if(newvalue === null) {
-                localStorage.setItem(this.valueRange.name, this.valueRange.height);
-            } else {
-                localStorage.setItem(this.valueRange.name, newvalue);
-            }
-
-        }
-    },
+    // watch: {
+    //     value(newvalue) {
+    //         if(newvalue === null) {
+    //             localStorage.setItem(this.valueRange.name, this.valueRange.height);
+    //         } else {
+    //             localStorage.setItem(this.valueRange.name, newvalue);
+    //         }
+    //
+    //     }
+    // },
     mounted() {
         this.value = localStorage.getItem(this.valueRange.name);
     },
