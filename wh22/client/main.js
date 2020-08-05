@@ -18,7 +18,7 @@ window.onload = function () {
     country.addEventListener('change', updateIndex);
 
     async function updateIndex(e) {
-        console.log(e.target.value, 'e.target');
+        console.log(e.target.value, 'e.target_21');
         const data = await fetch(`http://localhost:3003/${e.target.value}/?index=${e.target.value}`);
         const resp = await data.json();
         console.log(resp, 'resp');
@@ -28,6 +28,8 @@ window.onload = function () {
     city.addEventListener('change', updateIndexCity);
 
     async function updateIndexCity(e) {
+        console.log(e, 'street');
+        console.log(e.target.value, 'street__32');
         const data = await fetch(`http://localhost:3003/street/${e.target.value}/?index=${e.target.value}`);
         const resp = await data.json();
         console.log(resp, 'resp');

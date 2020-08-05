@@ -44,12 +44,12 @@ app.get('/:id', function (req, res) {
     });
 });
 
-app.get('street/:id', function (req, res) {
+app.get('/street/:id', function (req, res) {
     console.log(req.query, 'server row 48');
     let {index} = req.query;
     console.log(index, 'server row 50');
 
-    fs.readFile(`street/ukraine/${index}.json`, 'utf8', function (error, data) {
+    fs.readFile(`street/${index}.json`, 'utf8', function (error, data) {
         console.log(data);
         res.status(200).send(data);
     });
