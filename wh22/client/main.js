@@ -6,12 +6,11 @@ window.onload = function () {
     async function modernSendAjax() {
         const data = await fetch(`http://localhost:3003/country`);
         const resp = await data.json();
-        console.log(resp, 'resp');
         country.innerHTML = addSelect(resp);
     }
 
     function addSelect(arr) {
-        return `${arr.map(item => `<option>${item}</option>`).join(' ')}`
+        return `${arr.map(value => `<option value="${Object.keys(value)}">${Object.values(value)}</option>`).join(' ')}`
     }
 
     modernSendAjax();
@@ -19,7 +18,8 @@ window.onload = function () {
     country.addEventListener('change', updateIndex);
 
     async function updateIndex(e) {
-        const data = await fetch(`http://localhost:3003/${e.target.selectedIndex}/?index=${e.target.selectedIndex}`);
+        console.log(e.target.value, 'e.target');
+        const data = await fetch(`http://localhost:3003/${e.target.value}/?index=${e.target.value}`);
         const resp = await data.json();
         console.log(resp, 'resp');
         city.innerHTML = addSelect(resp);
@@ -28,7 +28,7 @@ window.onload = function () {
     city.addEventListener('change', updateIndexCity);
 
     async function updateIndexCity(e) {
-        const data = await fetch(`http://localhost:3003/street/${e.target.selectedIndex}/?index=${e.target.selectedIndex}`);
+        const data = await fetch(`http://localhost:3003/street/${e.target.value}/?index=${e.target.value}`);
         const resp = await data.json();
         console.log(resp, 'resp');
         street.innerHTML = addSelect(resp);
