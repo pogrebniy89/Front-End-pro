@@ -4,37 +4,30 @@ Vue.component('Diagram', {
             diagrams: [
                 {
                     name: 'D1',
-                    height: 100,
                     'background': 'red'
                 },
                 {
                     name: 'D2',
-                    height: 110,
                     'background': 'coral'
                 },
                 {
                     name: 'D3',
-                    height: 120,
                     'background': 'greenyellow'
                 },
                 {
                     name: 'D4',
-                    height: 130,
                     'background': 'green'
                 },
                 {
                     name: 'D5',
-                    height: 140,
                     'background': 'aqua'
                 },
                 {
                     name: 'D6',
-                    height: 140,
                     'background': 'burlywood'
                 },
                 {
                     name: 'D7',
-                    height: 160,
                     'background': 'cyan'
                 },
             ],
@@ -52,7 +45,6 @@ Vue.component('Diagram', {
      `
 })
 
-
 Vue.component('column', {
     props: ['indexD'],
     data() {
@@ -63,21 +55,17 @@ Vue.component('column', {
     methods: {
         moveEvent(value) {
             this.heightColumn = value;
-            // localStorage.setItem(this.indexD.name, value);
         }
     },
     mounted() {
         this.heightColumn = localStorage.getItem(this.indexD.name);
-        // localStorage.setItem(this.indexD.name, this.indexD.height);
     },
     template: `
         <div class="wrap">
-            <div class="decorColumn" v-bind:style='{height: heightColumn + "px", background: indexD.background}'>{{indexD.name}}
-            
-            </div>
+            <div class="decorColumn" v-bind:style='{height: heightColumn + "px", background: indexD.background}'></div>
+            <div>{{indexD.name}}</div>
             <range :valueRange="indexD" @moveHeight="moveEvent"></range>   
-        </div>
-        
+        </div>        
     `
 })
 
@@ -95,26 +83,18 @@ Vue.component('range', {
             localStorage[this.name] = this.value;
         }
     },
-    // watch: {
-    //     value(newvalue) {
-    //         if(newvalue === null) {
-    //             localStorage.setItem(this.valueRange.name, this.valueRange.height);
-    //         } else {
-    //             localStorage.setItem(this.valueRange.name, newvalue);
-    //         }
-    //
-    //     }
-    // },
     mounted() {
-        this.value = localStorage.getItem(this.valueRange.name);
+        if (localStorage.getItem(this.valueRange.name)) {
+            this.value = localStorage.getItem(this.valueRange.name);
+        } else {
+            this.value = 0;
+        }
+
     },
-
-
     template: `
-        <div><input type="range" v-model="value" min="100" max="300" step="1" @input="onClick">{{this.value}}</div>
+        <div><input type="range" v-model="value" min="0" max="300" step="1" @input="onClick">{{this.value}}</div>
     `
 })
-
 
 let vue = new Vue({
     el: '#app',
