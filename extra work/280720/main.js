@@ -41,9 +41,6 @@ Vue.component('Diagram', {
         }
     },
     methods: {
-        moveEvent(){
-            console.log('tut');
-        }
     },
     template: `
             <div class="decor">
